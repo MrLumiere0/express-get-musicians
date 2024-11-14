@@ -11,12 +11,6 @@ const port = 3000;
 app.use("/musicians", musican);
 
 app.use("/musicians/:id", musican);
-
-app.use("/musicians", musican);
-
-app.use("/musicians/:id", musican);
-
-app.use("/musicians/:id", musican);
   
 
 

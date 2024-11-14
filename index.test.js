@@ -6,7 +6,8 @@ execSync('npm run seed');
 const request = require("supertest")
 const { Musician } = require('./models/index')
 const {seedMusician} = require("./seedData");
-const router = require('./db/routes/musician')
+
+jest.mock('../' , () => ({create: jest.fn()}))
 
 
 describe('./musicians endpoint', () => {
@@ -18,6 +19,11 @@ describe('./musicians endpoint', () => {
     })
 
     test("Can create a new Musician", async () => {
+
+        // Create a user object with the musician insrance fields 
+
+        // Create a mock musician
+        const muscMock = { ...muscData, _id: "mockedId"}
         const response = await request(router).get("/musicians/:name/:intstrument")
         expect(response.status).toBe(200)
     })
